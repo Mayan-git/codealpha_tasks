@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniSocial — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar"><div id="navbar"></div></nav>
+
+  <div class="container">
+    <div class="card composer">
+      <div id="composerAvatar"></div>
+      <div class="composer-body">
+        <textarea id="postContent" placeholder="What's on your mind?" maxlength="2000"></textarea>
+        <div class="composer-actions">
+          <button class="btn" id="postBtn">Post</button>
+        </div>
+        <p class="error" id="composerError"></p>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-scope="all">For You</button>
+      <button class="tab" data-scope="following">Following</button>
+    </div>
+
+    <div id="feed"></div>
+    <div id="feedStatus" class="spinner-row"></div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/post-render.js"></script>
+  <script src="js/feed.js"></script>
+</body>
+</html>

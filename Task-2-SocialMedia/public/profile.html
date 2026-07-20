@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile — MiniSocial</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar"><div id="navbar"></div></nav>
+
+  <div class="container">
+    <div class="card" id="profileCard">
+      <div class="spinner-row">Loading profile...</div>
+    </div>
+
+    <div id="editCard" class="card" style="display:none;">
+      <h2>Edit profile</h2>
+      <div class="field">
+        <label for="bioInput">Bio</label>
+        <textarea id="bioInput" maxlength="280"></textarea>
+      </div>
+      <div class="field">
+        <label for="avatarInput">Avatar image</label>
+        <input type="file" id="avatarInput" accept="image/*" />
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn" id="saveProfileBtn">Save changes</button>
+        <button class="btn btn-ghost" id="cancelEditBtn">Cancel</button>
+      </div>
+      <p class="error" id="editError"></p>
+    </div>
+
+    <div id="postsSection">
+      <h2 style="font-size:1.05rem; margin: 20px 0 10px;">Posts</h2>
+      <div id="userPosts"></div>
+      <div id="postsStatus" class="spinner-row"></div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/post-render.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

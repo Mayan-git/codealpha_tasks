@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign up — MiniSocial</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar"><div id="navbar"></div></nav>
+
+  <div class="container-narrow">
+    <div class="card">
+      <h1>Create your account</h1>
+      <p class="subtitle">Join MiniSocial in seconds</p>
+
+      <form id="registerForm">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" required minlength="6" autocomplete="new-password" />
+        </div>
+        <button class="btn btn-block" type="submit">Sign up</button>
+        <p class="error" id="errorMsg"></p>
+      </form>
+
+      <p class="hint">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    if (Auth.isLoggedIn()) window.location.href = "index.html";
+
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const errorMsg = document.getElementById("errorMsg");
+      errorMsg.textContent = "";
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const { token, user } = await api("/auth/register", {
+          method: "POST",
+          body: { username, email, password },
+        });
+        Auth.setSession(token, user);
+        window.location.href = "index.html";
+      } catch (err) {
+        errorMsg.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>
