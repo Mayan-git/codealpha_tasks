@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — ShopEasy</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main>
+    <h1>Checkout</h1>
+    <div id="alert-area"></div>
+    <div class="checkout-layout">
+      <div class="form-card" style="max-width:none">
+        <h2>Shipping Address</h2>
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" required />
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" required />
+            </div>
+            <div class="form-group">
+              <label for="postalCode">Postal Code</label>
+              <input type="text" id="postalCode" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" required />
+          </div>
+          <div class="form-group">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod">
+              <option value="Cash on Delivery">Cash on Delivery</option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="PayPal">PayPal</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="place-order-btn">Place Order</button>
+        </form>
+      </div>
+
+      <div class="order-summary-card">
+        <h2>Order Summary</h2>
+        <div id="order-summary-items"></div>
+        <div class="summary-row total" id="order-summary-total"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">ShopEasy &mdash; Basic e-commerce demo</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
